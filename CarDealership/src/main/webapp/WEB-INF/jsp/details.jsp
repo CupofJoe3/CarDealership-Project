@@ -43,7 +43,7 @@
 			<img src="${selVeh.picLocation}" class="card-img-top" alt="...">
 			<div class="card-body">
 				<h5 class="card-title">
-					${vehicle.used ? "Used" : "New"}
+					${selVeh.used ? "Used" : "New"}
 					<c:out value="${ selVeh.year }" />
 					<c:out value="${ selVeh.make }" />
 					<c:out value="${ selVeh.model }" />
@@ -70,8 +70,8 @@
 				<li class="list-group-item">Miles: <c:out value="${selVeh.miles}"/></li>
 			</ul>
 			<div class="card-body">
-				<a href="#" class="card-link">Card link</a> <a href="#"
-					class="card-link">Another link</a>
+				<a href="buyer?inventoryId=${selVeh.inventoryId}" class="card-link"><button
+							type="button" class="btn btn-primary">Click to buy!!!</button></a> 
 			</div>
 		</div>
 	</main>

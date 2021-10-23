@@ -8,13 +8,16 @@ import java.util.ArrayList;
 
 import org.springframework.stereotype.Service;
 
+import com.project2.Entity.Buyer;
 import com.project2.Entity.Cars;
 
 @Service
 public class CarService {
 	public Cars pickedCar = new Cars();
 	public ArrayList<Cars> inventory = new ArrayList<Cars>();
+	public ArrayList<Buyer> buyerList = new ArrayList<Buyer>();
 	public long inventoryCount = 10;
+	public long buyerCount = 0;
 	
 	private static double round(double value, int places) {
 	    if (places < 0) throw new IllegalArgumentException();
@@ -44,7 +47,7 @@ public class CarService {
 				return pickedCar;
 			}
 		}
-		return null;
+		return pickedCar;
 	}
 	public String discount(String selectedCarPrice) {
 		String n = selectedCarPrice.replace("$", "");
@@ -55,6 +58,23 @@ public class CarService {
 		
 		return discountPrice;
 	}
-	
+	public void saveBuyer(Buyer buyer) {
+		buyerList.add(buyer);
+		buyerCount++;
+	}
+	public void clearInv() {
+		int boughtCarId = buyerList.size() - 1;
+		for(int i = 0; i < inventoryCount; i++) {
+			if(inventory.get(i).getInventoryId() == boughtCarId) {
+				inventory.remove(i);
+				inventoryCount--;
+			}
+		}
+	}
+	public Buyer lastBuyer() {
+		Buyer lastBuyer = buyerList.get(buyerList.size()-1);
+		
+		return lastBuyer;
+	}
 
 }

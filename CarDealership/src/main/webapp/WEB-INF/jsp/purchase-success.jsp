@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -22,11 +23,11 @@
 </head>
 
 
-<body class="text-center" style="background-color: gray">
-	<div class="cover-container d-flex w-5 h-5 p-3 mx-auto flex-column ">
-		<header class="masthead mb-auto" style="color: white">
+<body class="text-center" style="background-color: gray;">
+	<div class="cover-container d-flex w-5 h-5 p-3 mx-auto flex-column">
+		<header class="masthead mb-auto">
 			<div class="inner">
-				<h3 class="masthead-brand">Joe's Car Dealership</h3>
+				<h3 class="masthead-brand text-white">Joe's Car Dealership</h3>
 				<nav class="nav nav-masthead justify-content-center">
 					<a class="nav-link active text-white" href="/"><button
 							type="button" class="btn btn-primary">Home</button></a> <a
@@ -38,30 +39,12 @@
 			</div>
 		</header>
 	</div>
-	<main class="container">
-		<div class="row row-cols-2 row-cols-md-3 g-4" style="margin: 3rem;">
-			<c:forEach items="${ vehInv }" var="vehicle">
-				<div class="card m-2 d-flex mx-auto">
-					<img src="${vehicle.picLocation}" class="card-img-top" alt="...">
-					<div class="card-body">
-						<h5 class="card-title">
-						${vehicle.used ? "Used" : "New"}
-						
-							<c:out value="${ vehicle.year }" />
-							<c:out value="${ vehicle.make }" />
-							<c:out value="${ vehicle.model }" />
-						</h5>
-					
-						<a
-							href="details?inventoryId=${vehicle.inventoryId}"
-							class="card-link "><button class="btn btn-primary btn-md">Details</button></a>
-					</div>
-				</div>
-
-			</c:forEach>
-
-		</div>
-	</main>
+	<div class="mx-auto">
+		Congratulations 
+		<c:out value="${buyer.firstName}"></c:out>
+		<c:out value="${buyer.lastName}"></c:out>
+		on your car purchase save driving.
+	</div>
 </body>
 
 </html>
